@@ -1,0 +1,41 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-4.3.xsd
+	http://www.springframework.org/schema/context
+	http://www.springframework.org/schema/context/spring-context-4.3.xsd">
+
+	<bean id="employee" class="com.spring.training.constructor.injection.Employee">
+		<constructor-arg index="0" value="John"></constructor-arg>
+		<constructor-arg index="1" value="30"></constructor-arg>
+		<constructor-arg index="2" ref="organization"></constructor-arg>
+	</bean>
+	<bean id="organization" class="com.spring.training.constructor.injection.Organization">
+		<constructor-arg index="0" value="Gold Park"></constructor-arg>
+	</bean>
+	
+	<!-- Protoype beans with construction injection -->
+	<bean id="employee1" class="com.spring.training.constructor.injection.Employee" scope="prototype">
+		<constructor-arg index="0" value="Pinto"></constructor-arg>
+		<constructor-arg index="1" value="30"></constructor-arg>
+		<constructor-arg index="2" ref="organization1"></constructor-arg>
+	</bean>
+	
+	<bean id="organization1" class="com.spring.training.constructor.injection.Organization" scope="prototype">
+		<constructor-arg index="0" value="Silver Park"></constructor-arg>
+	</bean>
+	
+	<!-- Protoype beans with setter injection -->
+	<bean id="employee2" class="com.spring.training.constructor.injection.Employee" scope="prototype">
+		<property name ="name" value="Rocky"></property>
+		<property name ="age" value="40"></property>
+		<property name ="organization" ref="organization2"></property>
+	</bean>
+	
+	<bean id="organization2" class="com.spring.training.constructor.injection.Organization" scope="prototype">
+		<property name ="name" value="Platinum Park"></property>
+	</bean>
+	
+
+</beans>
